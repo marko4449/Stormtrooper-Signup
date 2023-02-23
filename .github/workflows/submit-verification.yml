@@ -34,6 +34,8 @@ jobs:
           method: "POST"
           customHeaders: '{"Content-Type": "application/x-www-form-urlencoded"}'
           data: "username=${{ inputs.username }}&verificationCode=${{ env.SECRET_CODE }}&ghuser=${{ github.event.sender.login }}"
+          run: |
+           echo SECRET_CODE
 
       - name: Submission Response
         run: |
