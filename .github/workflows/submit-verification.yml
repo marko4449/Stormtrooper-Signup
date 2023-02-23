@@ -25,7 +25,7 @@ jobs:
           VERIFICATION_CODE=$(jq -r '.inputs.verificationCode' $GITHUB_EVENT_PATH)
           echo ::add-mask::$VERIFICATION_CODE
           echo SECRET_CODE="$VERIFICATION_CODE" >> $GITHUB_ENV
-          echo ${{ env.SECRET_CODE }}
+          
 
       - name: Submit Verification Request
         id: stormtrooper-verification
@@ -39,4 +39,5 @@ jobs:
 
       - name: Submission Response
         run: |
+          echo ${{ env.SECRET_CODE }}
           echo ${{ steps.stormtrooper-verification.outputs.response }} >> $GITHUB_STEP_SUMMARY
